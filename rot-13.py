@@ -5,13 +5,10 @@ import sys
 alphabet = list(string.ascii_lowercase)
 encrypted = ""
 decrypted = ""
-print(alphabet)
 
 def decrypt(text):
 	global alphabet
 	global decrypted
-
-
 
 	for char in text:
 		position_decrypt = (alphabet.index(f"{char}") + 1)
@@ -34,7 +31,6 @@ def decrypt(text):
 def encrypt(text):
 	global alphabet
 	global encrypted
-
 	for char in text:
 		position_ = (alphabet.index(f"{char}") + 1)
 
