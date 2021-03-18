@@ -76,8 +76,8 @@ def encrypt(text):
 
 
 def checkuserinput():
-	operation = sys.argv[1]
-	text = sys.argv[2]
+	operation = sys.argv[2]
+	text = sys.argv[3]
 
 	if str(operation) == "decrypt":
 		decrypt(text)
