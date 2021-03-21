@@ -2,13 +2,18 @@ import string
 import random
 import time
 import sys
+import re
 alphabet = list(string.ascii_lowercase)
+intigers = list(string.digits)
+intiger = ""
 encrypted = ""
 decrypted = ""
 
 def decrypt(text):
+	global intiger
 	global alphabet
 	global decrypted
+	global intigers
 
 	for char in text:
 		position_decrypt = (alphabet.index(f"{char}") + 1)
@@ -23,54 +28,54 @@ def decrypt(text):
 			new_position_alphabet_n = alphabet[int(new_position_decrypt) - 1]
 			decrypted += new_position_alphabet_n
 
-	print(decrypted)
-
- 
-
+	print(f"Decrypted Text [{decrypted}{intiger}]")
 
 def encrypt(text):
+	global intiger
 	global alphabet
 	global encrypted
+	global intigers
 	for char in text:
+
+		if char in intigers:
+			encrypted += char
+			pass
+
 		position_ = (alphabet.index(f"{char}") + 1)
-
 		new_position = (position_ + 13)
-
 
 		if new_position > 26:
 			new_position = new_position - 26
-
 			get_position = alphabet[int(new_position) - 1]
-
 			encrypted += str(get_position)
-
-
 		else:
 			new_position = new_position
-
 			get_position = alphabet[int(new_position) - 1]
-
 			encrypted += str(get_position)
 
-
-
-
-	print(f"Encryped Text {encrypted}")
-
-
-
-
+	print(f"Encryped Text: [{encrypted}{intiger}]")
 
 
 def checkuserinput():
+	global intiger
 	operation = sys.argv[1]
 	text = sys.argv[2]
+
+	temp = re.compile("([a-zA-Z]+)([0-9]+)") 
+	res = temp.match(text).groups() 
+
+	text = res[0]
+
+	try:
+		intiger += res[1]
+	except:
+		pass
+
+
 
 	if str(operation) == "decrypt":
 		decrypt(text)
 	elif str(operation) == "encrypt":
 		encrypt(text)
-
-
-
+		
 checkuserinput()
