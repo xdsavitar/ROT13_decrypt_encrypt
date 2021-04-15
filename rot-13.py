@@ -61,10 +61,13 @@ def checkuserinput():
 	operation = sys.argv[1]
 	text = sys.argv[2]
 
-	temp = re.compile("([a-zA-Z]+)([0-9]+)") 
-	res = temp.match(text).groups() 
+	temp = re.compile("([a-zA-Z]+)([0-9]+)")
+	try:
 
-	text = res[0]
+		res = temp.match(text).groups() 
+		text = res[0]
+	except:
+		pass
 
 	try:
 		intiger += res[1]
